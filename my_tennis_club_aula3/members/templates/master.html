@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> {% block title %}{% endblock%}</title>
+    </head>
+    <body>
+        
+        <h1>My Tennis Club</h1>
+
+        <hr />
+        <p>
+            <a href='/'>Home</a>
+            <a href="/members/">Members</a>
+        </p>
+        <hr />
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
