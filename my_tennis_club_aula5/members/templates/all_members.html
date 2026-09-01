@@ -1,0 +1,32 @@
+{% extends "master.html" %}
+
+{% block title %}My Tennis Club - List of all members{% endblock title %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Members
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            {% for x in mymembers %}
+            <li class="list-group-item">
+                <a href="details/{{ x.id }}">{{x.firstname}} {{x.lastname}}</a>
+                <a href="delete/{{ x.id }}" class="ms-2 btn">
+                    <i class="fa-solid fa-trash" style="color: rgb(217, 22, 22);"></i>
+                </a>
+                <a href="update/{{ x.id }}" class="ms-2 btn">
+                    <i class="fa-solid fa-pen-to-square" style="color: rgb(116, 192, 252);"></i>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <p class="mt-3">
+            <a href="add/">Add member</a>
+        </p>
+    </div>
+</div>
+
+{% endblock  %}

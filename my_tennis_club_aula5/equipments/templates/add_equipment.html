@@ -1,0 +1,34 @@
+{% extends "master.html" %}
+
+{% block title %}My Tennis Club - Novo equipamento {{ mymember.firstname}} {{ mymember.lastname}} {% endblock title %}
+
+{% block content %}
+<div class="card mt2">
+    
+    <div class="card-header">
+        <h1>Novo Equipment</h1>
+    </div>
+    
+    <div class="card-body">
+        <form action="addrecord_equipment/" method="post">
+            {% csrf_token %}
+            Name: <br>
+            <input name="name">
+            <br><br>
+
+            Register Number: <br>
+            <input name="number">
+            <br><br>
+
+            Register Date: <br>
+            <input type="date" name="date">
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/equipments">Voltar</a></p>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "master.html" %}
+
+{% block title %}
+    My Tennis Club - Details about {{ myequipment.name}} {{ myequipment.id}}
+{% endblock title %}
+
+{% block content %}
+<div class="card mt2">
+    
+    <div class="card-header">
+        <h1>{{myequipment.name}} - {{myequipment.id}}</h1>
+    </div>
+    
+    <div class="card-body">
+        <p>Register Number: {{myequipment.register_number}}</p>
+        <p>Register Date: {{myequipment.register_date}}</p>
+
+        <p>Back to <a href="/equipments">Equipments</a></p>
+    </div>
+
+</div>
+{% endblock %}

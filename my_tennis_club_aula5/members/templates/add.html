@@ -1,0 +1,30 @@
+{% extends "master.html" %}
+
+{% block title %}My Tennis Club - Novo membro {{ mymember.firstname}} {{ mymember.lastname}} {% endblock title %}
+
+{% block content %}
+<div class="card mt2">
+    
+    <div class="card-header">
+        <h1>Novo Member</h1>
+    </div>
+    
+    <div class="card-body">
+        <form action="addrecord/" method="post">
+            {% csrf_token %}
+            First Name: <br>
+            <input name="first">
+            <br><br>
+
+            Last Name: <br>
+            <input name="last">
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/members">Voltar</a></p>
+    </div>
+
+</div>
+{% endblock %}
