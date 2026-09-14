@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+
+{% block title %}My Tennis Club{% endblock title %}
+
+{% block content %}
+    <h2>All Reservations</h2>
+    <ul>
+        {% for reservation in reservations %}
+            <li>{{ reservation }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

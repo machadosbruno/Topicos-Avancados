@@ -1,0 +1,30 @@
+{% extends "master.html" %}
+
+{% block title %}My Tennis Club - Editar membro {{ mymember.firstname}} {{ mymember.lastname}} {% endblock title %}
+
+{% block content %}
+<div class="card mt2">
+    
+    <div class="card-header">
+        Atualizando dados do membro
+    </div>
+    
+    <div class="card-body">
+        <form action="updaterecord/{{ mymember.id }}" method="post">
+            {% csrf_token %}
+            First Name: <br>
+            <input name="first" value="{{ mymember.firstname }}">
+            <br><br>
+
+            Last Name: <br>
+            <input name="last" value="{{ mymember.lastname }}">
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/members">Voltar</a></p>
+    </div>
+
+</div>
+{% endblock %}
