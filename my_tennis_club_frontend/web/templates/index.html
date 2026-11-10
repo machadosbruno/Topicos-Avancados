@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=pt-br>
+<head>
+    <meta charset="UTF-8">
+    <title>MY Tennis Club - Frontend</title>
+</head>
+<body>
+    <h1>Clube de Tênias (Painel Frontend)</h1>
+
+    <hr>
+
+    <h2>Cadastrar Novo Membr0</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% {% csrf_token %} %}
+        <input type="text" name="firstname" placeholder="Nome" required><br><br>
+        <input type="text" name="lastname" placeholder="Sobrenome" required><br><br>
+        <input type="text" name="phone" placeholder="Telefone"><br><br>
+        <input type="date" name="joined_date"><br><br>
+        <input type="file" name="foto"><br><br>
+        <select name="plan">
+            <option value="">Selecione um plano</option>
+            {% for plan in myplans %}
+                <option value="{{ plan.id }}">{{ plan.name }} (R$ {{ plan.prce }})</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Salvar Membro</button>
+    </form>
+
+    <hr>
+
+    <h2>Lista de Membros</h2>
+    <ul>
+        {% for m in mymembers %}
+            <li>
+                {% if m.foto %}
+                    <img src="{{ m.foto }}" width="30" alt="Foto">
+                {% endif %}
+                {{ m.firstname }} {{ m.lastname }} (Tel: {{ m.phone }})
+                | <a href="{% url 'edit_member' m.id %}">Editar</a>
+                | <a href="{% url 'delete_member' m.id %}"
+                onClick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+            </li>
+        {% empty %}
+            <li>Nenhum membro cadastrado.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
