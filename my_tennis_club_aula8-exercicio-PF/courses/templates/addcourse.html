@@ -1,0 +1,41 @@
+{% extends "master.html" %}
+
+{% block title %}
+- Novo curso
+{% endblock title %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Novo curso
+    </div>
+
+    <div class="card-body">
+
+        <form action="addrecord/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Name:<br>
+            <input type="text" name="name">
+            <br><br>
+            Description:<br>
+            <input type="text" name="description">
+            <br><br>
+            <p>Instrutor:
+                <select name="instructor">
+                    {% for x in myinstructors %}
+                    <option value="{{ x.id }}"> {{ x.name }} </option>
+                    {% endfor %}
+                </select>
+            </p>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/courses">Voltar</a></p>
+
+    </div>
+
+</div>
+
+{% endblock %}

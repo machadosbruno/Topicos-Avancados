@@ -1,0 +1,38 @@
+{% extends "master.html" %}
+
+{% block title %}
+- Alterando instrutor
+{% endblock title %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Alterando instrutor
+    </div>
+
+    <div class="card-body">
+
+        <form action="updaterecord/{{ myinstructor.id }}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Name:<br>
+            <input type="text" name="nome" value="{{ myinstructor.name }}">
+            <br><br>
+            Foto:<br>
+            <input name="foto" type="file">
+            <br><br>
+            {% if myinstructor.foto %}
+            <img src="{{myinstructor.foto.url}}" width="100">
+            <br><br>
+            {% endif %}
+            
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/instructors">Voltar</a></p>
+
+    </div>
+
+</div>
+
+{% endblock %}

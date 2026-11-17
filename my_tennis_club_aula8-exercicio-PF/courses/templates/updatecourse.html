@@ -1,0 +1,44 @@
+{% extends "master.html" %}
+
+{% block title %}
+- Alterando curso
+{% endblock title %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Alterando curso
+    </div>
+
+    <div class="card-body">
+
+        <form action="updaterecord/{{ mycourse.id }}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Name:<br>
+            <input type="text" name="name" value="{{ mycourse.name }}">
+            <br><br>
+            Description:<br>
+            <input type="text" name="description" value="{{ mycourse.description }}">
+            <br><br>
+            <p>Instrutor:
+                <select name="instructor">
+                    {% for x in myinstructor %}
+                    <option {% if x.id == mycourse.instructor.id %} selected {% endif %} value="{{ x.id }}">
+                        {{ x.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </p>
+            <br><br>
+            
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/courses">Voltar</a></p>
+
+    </div>
+
+</div>
+
+{% endblock %}

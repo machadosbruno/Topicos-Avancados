@@ -1,0 +1,33 @@
+{% extends "master.html" %}
+
+{% block title %}
+- Novo instrutor
+{% endblock title %}
+
+{% block content %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        Novo instrutor
+    </div>
+
+    <div class="card-body">
+
+        <form action="addrecord/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Name:<br>
+            <input type="text" name="nome">
+            <br><br>
+            Foto:<br>
+            <input name="foto" type="file">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <p><a href="/instructors">Voltar</a></p>
+
+    </div>
+
+</div>
+
+{% endblock %}

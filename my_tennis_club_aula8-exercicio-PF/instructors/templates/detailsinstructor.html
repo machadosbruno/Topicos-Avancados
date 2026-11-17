@@ -1,0 +1,22 @@
+{% extends "master.html" %}
+
+{% block title %} - Details about {{ myinstructor.name}} {% endblock title %}
+
+{% block content %}
+<div class="card mt-2">
+    <div class="card-header">
+        Details about {{myinstructor.name}}
+    </div>
+    <div class="card-body">
+
+        <h1>{{myinstructor.name}}</h1>
+
+        {% if myinstructor.photo %}
+        <p><img src="{{ myinstructor.photo.url }}" width="100"></p>
+        {% endif %}
+        
+        <p>Back to <a href="/instructors">Instructors</a></p>
+
+    </div>
+</div>
+{% endblock %}>
